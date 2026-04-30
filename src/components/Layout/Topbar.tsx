@@ -40,18 +40,18 @@ const Topbar = memo(({ title }: { title: string }) => {
       <div className="relative" ref={ref}>
         <button
           onClick={() => setOpen(p => !p)}
-          className={`relative h-7 w-7 flex items-center justify-center rounded transition-colors ${
-            permission === 'denied' ? 'text-red-400 hover:bg-red-50' : 'text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700'
+          className={`relative h-8 w-8 flex items-center justify-center rounded-md transition-colors ${
+            permission === 'denied' ? 'text-red-400 hover:bg-red-50' : 'text-zinc-500 hover:bg-zinc-100 hover:text-zinc-800'
           }`}
         >
-          {permission === 'denied' ? <BellOff size={14} /> : <Bell size={14} />}
+          {permission === 'denied' ? <BellOff size={16} /> : <Bell size={16} />}
           {unreadCount > 0 && permission !== 'denied' && (
-            <span className="absolute top-0.5 right-0.5 min-w-[14px] h-3.5 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center px-0.5 leading-none">
+            <span className="absolute -top-0.5 -right-0.5 min-w-[16px] h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1 leading-none">
               {unreadCount > 9 ? '9+' : unreadCount}
             </span>
           )}
-          {permission === 'default' && (
-            <span className="absolute top-0.5 right-0.5 w-2 h-2 bg-amber-400 rounded-full border border-white" />
+          {permission === 'default' && unreadCount === 0 && (
+            <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-amber-400 rounded-full border-2 border-white" />
           )}
         </button>
 

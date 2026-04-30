@@ -33,7 +33,7 @@ export default function PatientDetailsPage() {
   const hasFilters = searchQuery || statusFilter !== 'All' || wardFilter !== 'All';
 
   return (
-    <div className="max-w-6xl space-y-4">
+    <div className="w-full space-y-4">
       {/* Stat line */}
       <div className="flex items-center gap-6 text-[12px] text-zinc-500">
         <span><strong className="text-zinc-900 font-semibold">{PATIENTS.length}</strong> total</span>

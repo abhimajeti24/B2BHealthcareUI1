@@ -29,7 +29,7 @@ export default function DashboardPage() {
   const critical = useMemo(() => PATIENTS.filter(p => p.status === 'Critical'), []);
 
   return (
-    <div className="max-w-5xl space-y-6">
+    <div className="w-full space-y-6">
       {/* Notification permission nudge */}
       {permission === 'default' && !dismissed && (
         <div className="flex items-center gap-3 text-[12px] text-amber-700 bg-amber-50 border border-amber-200 rounded px-4 py-2.5">
@@ -49,16 +49,18 @@ export default function DashboardPage() {
         <p className="text-[10px] font-semibold uppercase tracking-widest text-zinc-400 mb-4">
           Overview · Today
         </p>
-        <div className="flex items-end gap-10">
-          <Stat value="1,284" label="Total patients" />
-          <div className="w-px h-8 bg-zinc-100" />
-          <Stat value="3" label="Critical" valueClass="text-red-600" />
-          <div className="w-px h-8 bg-zinc-100" />
-          <Stat value="47" label="Appointments" />
-          <div className="w-px h-8 bg-zinc-100" />
-          <Stat value="94.2%" label="Recovery rate" />
-          <div className="w-px h-8 bg-zinc-100" />
-          <Stat value="82%" label="Bed occupancy" />
+        <div className="grid grid-cols-5 gap-6">
+          {[
+            { value: '1,284', label: 'Total patients' },
+            { value: '3', label: 'Critical', valueClass: 'text-red-600' },
+            { value: '47', label: 'Appointments' },
+            { value: '94.2%', label: 'Recovery rate' },
+            { value: '82%', label: 'Bed occupancy' },
+          ].map(({ value, label, valueClass }) => (
+            <div key={label} className="border-r border-zinc-100 last:border-0 pr-6 last:pr-0">
+              <Stat value={value} label={label} valueClass={valueClass} />
+            </div>
+          ))}
         </div>
       </div>
 
